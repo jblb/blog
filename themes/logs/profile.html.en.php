@@ -5,36 +5,36 @@
 		<div class="bio" itemprop="description"><?php echo $bio ?></div>
 	</div>
 </div>
-<h2 class="post-index">Billets de cet auteur</h2>
+<h2 class="post-index">Posts by this author</h2>
 <?php if(!empty($posts)) {?>
 <ul class="post-list">
 	<?php $i = 0; $len = count($posts);?>
 	<?php foreach($posts as $p):?>
-		<?php
+		<?php 
 			if ($i == 0) {
 				$class = 'item first';
-			}
+			} 
 			elseif ($i == $len - 1) {
 				$class = 'item last';
 			}
 			else {
 				$class = 'item';
 			}
-			$i++;
+			$i++;		
 		?>
 	<li class="<?php echo $class;?>">
-		<span><a href="<?php echo $p->url?>"><?php echo $p->title ?></a></span> le <span><?php echo date('d F Y', $p->date)?></span> - publié dans <span><?php echo $p->tag ?></span>
+		<span><a href="<?php echo $p->url?>"><?php echo $p->title ?></a></span> on <span><?php echo date('d F Y', $p->date)?></span> - Posted in <span><?php echo $p->tag ?></span>
 	</li>
 	<?php endforeach;?>
 </ul>
 <?php if (!empty($pagination['prev']) || !empty($pagination['next'])):?>
 	<div class="pager">
 		<?php if (!empty($pagination['prev'])):?>
-			<span class="newer" >&laquo; <a href="?page=<?php echo $page-1?>" rel="prev">Plus récent</a></span>
+			<span class="newer" >&laquo; <a href="?page=<?php echo $page-1?>" rel="prev">Newer</a></span>
 		<?php endif;?>
 		<?php if (!empty($pagination['next'])):?>
-			<span class="older" ><a href="?page=<?php echo $page+1?>" rel="next">Plus ancien</a> &raquo;</span>
+			<span class="older" ><a href="?page=<?php echo $page+1?>" rel="next">Older</a> &raquo;</span>
 		<?php endif;?>
 	</div>
 <?php endif;?>
-<?php } else { echo 'Aucun billet trouvé !'; }?>
+<?php } else { echo 'No posts found!'; }?>
